@@ -14,15 +14,17 @@
     <table>
         {%for item in items %}
             <tr>
-                <td>{{item.name}}</td>
-                <td>
-                    {% if item.done == True %}
-                    <p>Completed</p>
-                    {% else  %}
-                    {{item.done}}
-                    {% endif  %}
+                {% if item.done %}
+                    <td> <strike>{{item.name}}</strike>
+                {% else  %}
+                    <td>{{item.name}}</td>
+                {% endif  %}
                 </td>
             </tr>
+        {% empty% }
+        <tr>
+            <td>You have nothing to do</td>
+        </tr>
         {% endfor %}
     </table>
 
